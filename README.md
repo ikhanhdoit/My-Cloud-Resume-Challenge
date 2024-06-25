@@ -11,8 +11,9 @@ This is how I created my static resume website to include tools and solutinos th
 - filename is 'style.css'
 
 ## 3. Static Website
-- Statis webpage is deployed on AWS S3 as static website.
+- Static webpage is deployed on AWS S3 as static website.
 - Include both 'index.html' and 'style.css' file in the S3 bucket
 - Name of bucket is 'khanh-tran-cloud-resume'
+- Enabled Static Website Hosting for S3 bucket, allow public access, and updated Bucket policy to allow GetObject for objectis in the S3 bucket for index.html
 
 ## 4. HTTPS
