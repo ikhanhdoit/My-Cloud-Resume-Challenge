@@ -1,6 +1,6 @@
 # My Cloud Resume Challenge
 
-This is how I created my static resume website to include tools and solutinos that a Cloud Engineer might use, including DNS, HTTPS, Python, IaC, CI/CD, AWS services such as Lambda, S3, API Gateway, DynamoDB, Route 53, Cloudfront, Certificate Manager, etc.
+This is how I created my static resume website to include tools and solutinos that a Cloud Engineer might use, including DNS, HTTPS, Python, IaC, CI/CD, AWS services such as Lambda, S3, API Gateway, DynamoDB, Route 53, CloudFront, Certificate Manager, etc.
 
 ## 1. HTML
 - What the resume is written in. Took a sample HTML template and included the resume information
@@ -14,12 +14,19 @@ This is how I created my static resume website to include tools and solutinos th
 - Static webpage is deployed on AWS S3 as static website
 - Include both 'index.html' and 'style.css' file in the S3 bucket
 - Name of bucket is 'khanh-tran-cloud-resume'
-- Enabled Static Website Hosting for S3 bucket, allow public access, and updated Bucket policy to allow GetObject for objectis in the S3 bucket for index.html
+- Since we are using CloudFront as our CDN and will map the website domain to CloudFront, we don't need to enable Static Website Hosting for S3 bucket, allow public access, and updated Bucket policy to allow GetObject for objectis in the S3 bucket for index.html. We leave all of those disabled.
+    - This means that the bucket and index.html object does not have public access
 
 ## 4. HTTPS
 - Register for the domain 'khanhtran0318.com' using Route53
-- Used AWS Certification Manager to request public cert and store the SSL/TLS cert for HTTPS
-- Created Cloudfront distribution to store and retrieve website at Edge locations to reduce latency
-    - Then create Route53 CNAME records for the domain name to the Cloudfront distribution URL
-    - Applied the SSL/TLS cert to Cloudfront distribute and redirect any HTTP to HTTPS
-    - Updated S3 bucket policy to allow only GET from CloudFront
+- Used AWS Certification Manager (ACM) to request public cert and store the SSL/TLS cert for HTTPS
+- Created CloudFront distribution to store and retrieve website at Edge locations to reduce latency
+    - The origin domain is your s3 bucket URL and use the same s3 bucket URL to create the Origin Access Control (OAC) to allow origin access
+    - Redirect HTTP to HTTPS for viewer protocol policy
+    - Select the custom SSL certificate that you created with ACM
+- Update S3 bucket policy to allow CloudFront s3:GetObject access that is provided to you by CloudFront
+
+## 5. DNS
+- Then create Route53 A record aliases for the domain name (both with and without www) to the CloudFront distribution URL
+
+## 6. Javascript
