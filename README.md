@@ -30,3 +30,8 @@ This is how I created my static resume website to include tools and solutinos th
 - Then create Route53 A record aliases for the domain name (both with and without www) to the CloudFront distribution URL
 
 ## 6. Javascript
+- Use javascript scripts for mobile menu and visitor counter
+
+## 7. DynamoDB
+- Use AWS DynamoDB to store and update the count on the database
+- 
