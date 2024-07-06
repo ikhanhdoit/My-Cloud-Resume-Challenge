@@ -1,6 +1,6 @@
 # My Cloud Resume Challenge
 
-This is how I created my static resume website to include tools and solutinos that a Cloud Engineer might use, including DNS, HTTPS, Python, IaC, CI/CD, AWS services such as Lambda, S3, API Gateway, DynamoDB, Route 53, CloudFront, Certificate Manager, etc.
+This is how I created my static resume website to include tools and solutinos that a Cloud Engineer might use, including DNS, HTTPS, Python, IaC, CI/CD, AWS services such as Lambda, S3, API Gateway, DynamoDB, Route 53, CloudFront, Certificate Manager, etc. ChatGPT was used to help with steps and debugging code.
 
 ## 1. HTML
 - What the resume is written in. Took a sample HTML template and included the resume information
@@ -34,4 +34,15 @@ This is how I created my static resume website to include tools and solutinos th
 
 ## 7. DynamoDB
 - Use AWS DynamoDB to store and update the count on the database
-- 
+
+## 8. Lambda
+- Using and AWS Lambda function (in Python) to update the visitor count to DynamoDB
+
+## 9. API Gateway
+- Use AWS API Gateway to create an REST API to communicate frontend website with the backend infrastructure
+- This will get and update the visitor count for the resume website
+- Use API Gateway to GET the AWS Lambda to get invoked each time a visitor comes to the website
+- This will update and GET the count of visitors from DynamoDB
+
+
+
