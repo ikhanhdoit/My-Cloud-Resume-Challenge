@@ -43,6 +43,9 @@ This is how I created my static resume website to include tools and solutinos th
 - This will get and update the visitor count for the resume website
 - Use API Gateway to GET the AWS Lambda to get invoked each time a visitor comes to the website
 - This will update and GET the count of visitors from DynamoDB
+** After debugging the code and ensure that everything aligned together correctly, had to inspect the website because the old API URL was being invoked
+    when the new one did not get invoked because of the CloudFront caching. Had to invalidate the CloudFront Distribution in order to have the visitor
+    counter show up correctly on the webpage.
 
 
 
