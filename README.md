@@ -47,5 +47,5 @@ This is how I created my static resume website to include tools and solutinos th
     when the new one did not get invoked because of the CloudFront caching. Had to invalidate the CloudFront Distribution in order to have the visitor
     counter show up correctly on the webpage.
 
-
-
+## 10. CI/CD
+- Using Github Actions to create a CI/CD workflow where it will upload the latest updated files to the S3 bucket
