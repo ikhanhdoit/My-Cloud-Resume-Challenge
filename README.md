@@ -49,3 +49,5 @@ This is how I created my static resume website to include tools and solutinos th
 
 ## 10. CI/CD
 - Using Github Actions to create a CI/CD workflow where it will upload the latest updated files to the S3 bucket
+- Create new AWS IAM Role to provide S3 bucket access to upload files
+
