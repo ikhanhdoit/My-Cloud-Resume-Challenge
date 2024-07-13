@@ -25,4 +25,4 @@ jobs:
 
     - name: Sync S3 bucket
       run: |
-        aws s3 sync . s3://khanh-tran-cloud-resume --follow-symlinks --delete --exclude '.git/*' --size-only
+        aws s3 sync . s3://khanh-tran-cloud-resume/ --follow-symlinks --delete --exclude '.git/*' --size-only
