@@ -52,7 +52,7 @@ This is how I created my static resume website to include tools and solutinos th
 - Create new AWS IAM Role to provide S3 bucket temporary access to upload files instead of creating the user
     - This is done using AWS IAM Roles and AWS Security Token Service (STS) to provide the Github Repository access to the S3 bucket
     - Need to also provide the permission policy to that role to upload objects into S3
-- Then create the Github Actions and incorporate your role and S3 bucket into the YAML file in <repository>.github/workflows/
+- Then create the Github Actions and incorporate your role and S3 bucket into the YAML file in 'your-respository-name.github/workflows/'
 - Now it will upload any new commits in the root (.) folder of Github to S3 by using aws s3 sync instead of just uploading everything in the repository each time
 
 ## 11. CI/CD (Part 2)
