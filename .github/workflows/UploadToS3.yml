@@ -1,4 +1,4 @@
-name: Deploy to S3
+name: Upload To S3
 
 on:
   push:
@@ -20,9 +20,9 @@ jobs:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
-        role-to-assume: arn:aws:iam::471112515426:role/Github_to_S3_role
-        aws-region: us-east-1  # Change to your region if different
+        role-to-assume: ${{ secrets.AWS_GITHUB_ROLE }}
+        aws-region: us-east-1
 
     - name: Sync S3 bucket
       run: |
-        aws s3 sync . s3://khanh-tran-cloud-resume --follow-symlinks --delete --exclude '.git/*' --size-only
+        aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --follow-symlinks --delete --exclude '.git/*' --size-only
