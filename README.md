@@ -61,4 +61,5 @@ This is how I created my static resume website to include tools and solutinos th
 ## 11. CI/CD (Part 2)
 - Using Github Actions to show the most recent version of the resume by invalidating the Cloudfront Cache each time there is an update to Github
 - This is ensure that users will get the most updated content instead of a cache when updates are made to GitHub
+- Both CI/CD workflows with Github Actions were added to the same workflow file
 
