@@ -1,4 +1,4 @@
-name: Invalidate CloudFront distribution
+name: Copy website to S3 and invalidate CloudFront distribution
 
 on:
   push:
@@ -10,6 +10,23 @@ permissions:
   contents: read
 
 jobs:
+  copy-website-to-s3:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        role-to-assume: ${{ secrets.AWS_GITHUB_ROLE }}
+        aws-region: us-east-1
+
+    - name: Sync S3 bucket
+      run: |
+        aws s3 sync . s3://${{ secrets.AWS_S3_BUCKET_NAME }} --follow-symlinks --delete --exclude '.git/*' --size-only
+        
   invalidate-cloudfront-distribution:
     runs-on: ubuntu-latest
 
@@ -22,7 +39,6 @@ jobs:
       with:
         role-to-assume: ${{ secrets.AWS_GITHUB_ROLE }}
         aws-region: us-east-1
-        role-session-name: GithubActions_to_CloudFront
 
     - name: Invalidate CloudFront distribution
       run: |
