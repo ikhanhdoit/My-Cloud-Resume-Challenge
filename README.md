@@ -21,10 +21,13 @@ This is how I created my static resume website to include tools and solutinos th
 - Register for the domain 'khanhtran0318.com' using Route53
 - Used AWS Certification Manager (ACM) to request public cert and store the SSL/TLS cert for HTTPS
 - Created CloudFront distribution to store and retrieve website at Edge locations to reduce latency
-    - The origin domain is your s3 bucket URL and use the same s3 bucket URL to create the Origin Access Control (OAC) to allow origin access
+    - The origin domain is your S3 bucket URL and use the same S3 bucket URL to create the Origin Access Control (OAC) to allow origin access
     - Redirect HTTP to HTTPS for viewer protocol policy
     - Select the custom SSL certificate that you created with ACM
 - Update S3 bucket policy to allow CloudFront s3:GetObject access that is provided to you by CloudFront
+- Since index.html is inside the subfolder of 'frontend' in the S3 bucket, I had to make sure the Origin's 'Origin's path - optional' was updated to "frontend/"
+    - This would ensure that cloudfront looks at that subfolder instead of looking on the root bucket and not find the index.html file
+    - Also updated the Distrubition setting to make the 'Default root object - optional' to "index.html" so cloudfront would look at "frontend/index.html"
 
 ## 5. DNS
 - Then create Route53 A record aliases for the domain name (both with and without www) to the CloudFront distribution URL
@@ -57,3 +60,5 @@ This is how I created my static resume website to include tools and solutinos th
 
 ## 11. CI/CD (Part 2)
 - Using Github Actions to show the most recent version of the resume by invalidating the Cloudfront Cache each time there is an update to Github
+- This is ensure that users will get the most updated content instead of a cache when updates are made to GitHub
+
