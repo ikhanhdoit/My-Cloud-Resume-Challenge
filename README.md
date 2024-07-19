@@ -30,7 +30,8 @@ This is how I created my static resume website to include tools and solutinos th
     - Also updated the Distrubition setting to make the 'Default root object - optional' to "index.html" so cloudfront would look at "frontend/index.html"
 
 ## 5. DNS
-- Then create Route53 A record aliases for the domain name (both with and without www) to the CloudFront distribution URL
+- Create Route53 A (Alias) record for the domain name (domain_name.com) to the CloudFront distribution URL
+- Then create Route53 CNAME record for the sub domain name (www.domain_name.com) to the CloudFront distribution URL
 
 ## 6. Javascript
 - Use javascript scripts for mobile menu and visitor counter
