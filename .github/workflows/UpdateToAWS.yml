@@ -22,6 +22,7 @@ jobs:
       with:
         role-to-assume: ${{ secrets.AWS_GITHUB_ROLE }}
         aws-region: us-east-1
+        role-session-name: GithubActions_to_S3
 
     - name: Sync S3 bucket
       run: |
@@ -39,6 +40,7 @@ jobs:
       with:
         role-to-assume: ${{ secrets.AWS_GITHUB_ROLE }}
         aws-region: us-east-1
+        role-session-name: GithubActions_to_CloudFront
 
     - name: Invalidate CloudFront distribution
       run: |
