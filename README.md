@@ -18,7 +18,7 @@ This is how I created my static resume website to include tools and solutinos th
     - This means that the bucket and index.html object does not have public access
 
 ## 4. HTTPS
-- Register for the domain 'khanhtran0318.com' using Route53
+- Register for the domain 'khanhqtran.com' using Route53
 - Used AWS Certification Manager (ACM) to request public cert and store the SSL/TLS cert for HTTPS
 - Created CloudFront distribution to store and retrieve website at Edge locations to reduce latency
     - The origin domain is your S3 bucket URL and use the same S3 bucket URL to create the Origin Access Control (OAC) to allow origin access
